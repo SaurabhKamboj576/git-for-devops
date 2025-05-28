@@ -1,5 +1,11 @@
-def my_function():
-    a = 5
-    b = 7
+def myfunction():
+    
+    a = 4
+    b = 6
+    
     return d
-my_function()
+myfunction()
+
+
+
+mytest()
