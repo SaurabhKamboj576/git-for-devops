@@ -1,3 +1,12 @@
-print("hello docto , how are you?")
-print("i have done some changes int his file ")
-print("i am making changes in this file from the github directly")
+"""This script prints some greetings and messages."""
+
+
+def greet():
+    """Prints greeting messages."""
+    print("Hello doctor, how are you?")
+    print("I have done some changes into this file.")
+    print("I am making changes in this file from GitHub directly.")
+
+
+if __name__ == "__main__":
+    greet()
