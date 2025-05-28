@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo "🔍 Running flake8 on staged Python files..."
+
+# Get all staged .py files
+files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.py$')
+
+# Exit if no Python files are staged
+if [ -z "$files" ]; then
+    echo "✅ No Python files staged. Skipping flake8 check."
+    exit 0
+fi
+
+# Run flake8 on each staged file
+fail=0
+for file in $files; do
+    flake8 "$file"
+    if [ $? -ne 0 ]; then
+        echo "❌ flake8 failed on $file"
+        fail=1
+    fi
+done
+
+if [ $fail -eq 1 ]; then
+    echo "🚫 Commit blocked due to flake8 issues."
+    exit 1
+else
+    echo "✅ All files passed flake8 check."
+    exit 0
+fi
